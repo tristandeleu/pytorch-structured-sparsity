@@ -13,7 +13,7 @@ def _get_l2_norms(groups):
             if not param.requires_grad:
                 continue
             groups_norms.append(torch.linalg.norm(param, dim=(0, 1))
-                                / math.sqrt(param.size(-1)))
+                                * math.sqrt(param.size(-1)))
 
         if groups_norms:
             norms.append(torch.cat(groups_norms))
